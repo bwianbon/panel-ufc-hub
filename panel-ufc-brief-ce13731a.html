@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFC 面板 · 稳定访问入口说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fbe9d7 0%, #f5d3b3 50%, #edc7a0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 40px;
+            box-shadow: 0 20px 40px -12px rgba(160, 100, 60, 0.25),
+                        0 4px 18px rgba(0, 0, 0, 0.05);
+            padding: 2.8rem 2.5rem;
+            transition: all 0.2s ease;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            color: #3c2a1b;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+            border-left: 5px solid #d48c5a;
+            padding-left: 1.2rem;
+        }
+
+        .subhead {
+            color: #6b4f34;
+            font-size: 1rem;
+            margin-bottom: 2.2rem;
+            line-height: 1.5;
+            background: rgba(212, 140, 90, 0.06);
+            padding: 0.6rem 1.2rem;
+            border-radius: 100px;
+            display: inline-block;
+            font-weight: 450;
+        }
+
+        p {
+            color: #3b2d1f;
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 1.3rem;
+        }
+
+        .highlight-card {
+            background: #fff9f2;
+            border-radius: 24px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.6rem 0 1.8rem 0;
+            box-shadow: inset 0 1px 4px rgba(255,255,240,0.8), 0 6px 14px rgba(140, 90, 50, 0.10);
+            border: 1px solid #ebd5c0;
+        }
+
+        .highlight-card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #4c351f;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .highlight-card ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+        }
+
+        .highlight-card li {
+            background: #f1e3d4;
+            padding: 0.45rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #3c2a18;
+            border: 1px solid #e4cdb5;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .feature-item {
+            background: #fcf6ed;
+            border-radius: 28px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #e7d3be;
+            transition: box-shadow 0.15s;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 6px 12px rgba(150, 100, 50, 0.08);
+        }
+
+        .feature-item .emoji-badge {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 1rem;
+            color: #3b291a;
+            margin-bottom: 4px;
+        }
+
+        .feature-item span {
+            font-size: 0.9rem;
+            color: #614e36;
+            line-height: 1.4;
+        }
+
+        .link-sentence {
+            background: #e5d3be;
+            border-radius: 60px;
+            padding: 1rem 1.8rem;
+            margin: 1.4rem 0 1.6rem;
+            text-align: center;
+            font-size: 1rem;
+            color: #2c1f11;
+            border: 1px solid #d3bb9f;
+            box-shadow: 0 4px 8px rgba(110, 70, 30, 0.05);
+        }
+
+        .link-sentence a {
+            color: #7a4f2a;
+            background: #fcf3e6;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.25rem 1rem;
+            border-radius: 48px;
+            display: inline-block;
+            transition: background 0.15s, color 0.15s;
+            border: 1px solid #dbbc9c;
+            letter-spacing: 0.02em;
+        }
+
+        .link-sentence a:hover {
+            background: #d48c5a;
+            color: #ffffff;
+            border-color: #b97342;
+        }
+
+        .faq-section {
+            margin: 2rem 0 1rem;
+            background: #f9efe4;
+            border-radius: 32px;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid #e2cdb5;
+        }
+
+        .faq-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3a2818;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            margin-bottom: 0.9rem;
+            border-bottom: 1px dashed #dcc4ac;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #4f3822;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .faq-a {
+            font-size: 0.9rem;
+            color: #5b4530;
+            line-height: 1.5;
+        }
+
+        .tip-note {
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #604b33;
+            background: #f6ede2;
+            padding: 0.8rem 1.4rem;
+            border-radius: 60px;
+            text-align: center;
+            border: 1px solid #e1ccb4;
+        }
+
+        hr {
+            margin: 1.6rem 0 1rem;
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #dbbca0, transparent);
+            opacity: 0.5;
+        }
+
+        .footer-meta {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #7c654b;
+            margin-top: 1.2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 1.2rem;
+                border-radius: 32px;
+            }
+            h1 {
+                font-size: 1.8rem;
+                padding-left: 0.9rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+            .highlight-card ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .link-sentence {
+                font-size: 0.95rem;
+                padding: 0.8rem 1.2rem;
+            }
+            .faq-section {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .subhead {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UFC · 面板说明</h1>
+        <div class="subhead">一个更稳定的浏览入口，日常使用场景梳理</div>
+
+        <p>
+            如果你持续关注 <strong>ufc</strong> 相关动态，或是需要定期查看某个特定内容面板，那么一个可靠、响应迅速的访问入口会省去很多反复排查的精力。这个页面不是为了推广，而是想从实际使用角度，把 site 的特点、适合做什么、使用时注意什么讲清楚。毕竟工具合不合适，只有自己试了才知道。
+        </p>
+
+        <div class="highlight-card">
+            <h2>✨ 几个比较突出的点</h2>
+            <ul>
+                <li>🖥 界面反应快，加载不拖沓</li>
+                <li>📁 信息结构清晰，减少翻找</li>
+                <li>🔐 基础访问门槛不高</li>
+                <li>🧩 日常浏览与轻量操作都够用</li>
+            </ul>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="emoji-badge">📌</span>
+                <strong>日常使用场景</strong>
+                <span>适合固定时间段查看信息流、状态更新，或者在需要快速确认某些条目时使用。不用反复登录验证，体验比较顺滑。</span>
+            </div>
+            <div class="feature-item">
+                <span class="emoji-badge">📎</span>
+                <strong>入口稳定性</strong>
+                <span>面板本身连接质量尚可，非高峰时期响应更好。如果你追求持续稳定的访问，可以把这个地址存为书签。</span>
+            </div>
+            <div class="feature-item">
+                <span class="emoji-badge">🧭</span>
+                <strong>适合谁用</strong>
+                <span>对界面简洁度有要求，不希望被广告或者无关模块干扰的人。也适合用多个设备切换浏览的情况。</span>
+            </div>
+            <div class="feature-item">
+                <span class="emoji-badge">⚙️</span>
+                <strong>一点提醒</strong>
+                <span>初次加载如果稍慢，可以刷新一次。面板本身不收集额外信息，但建议不要在公共设备上保存自动登录。</span>
+            </div>
+        </div>
+
+        <!-- 链接以自然句子方式嵌入，可见文本严格等于 "ufc" -->
+        <div class="link-sentence">
+            若想直接体验，可以试试前往 <a href="https://panel-ufc.com">ufc</a>，先简单浏览一下整体布局与响应速度。
+        </div>
+
+        <div class="faq-section">
+            <h3>❓ 常见疑问 · 摘要</h3>
+            <div class="faq-item">
+                <span class="faq-q">这个面板跟其他同类工具有什么区别？</span>
+                <span class="faq-a">更侧重轻量与直接，没有花哨的仪表盘，适合快速查看和基本操作，尤其适合对页面重量敏感的使用者。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">访问时一定要用特定网络吗？</span>
+                <span class="faq-a">普通家庭或办公网络基本都能正常打开，个别地区偶尔需要一点耐心。建议用主流浏览器最新版本。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">是否包含付费模块或隐藏收费？</span>
+                <span class="faq-a">根据现有页面说明，基础浏览与核心功能都没有收费提示。如果有任何变动，以实际页面展示为准。</span>
+            </div>
+        </div>
+
+        <div class="tip-note">
+            💡 使用建议：把链接存到书签栏，每天固定时间查看，体验更连贯。遇到打不开的情况可以先检查本地网络。
+        </div>
+
+        <hr>
+
+        <p style="font-size:0.95rem; color:#5d4832;">
+            补充一句：这份介绍基于当前面板呈现的内容与体验梳理，随着时间推移界面或功能可能微调。保持观察，以实际页面为准。如果你希望了解更多细节，不妨亲自花几分钟点开 <a href="https://panel-ufc.com" style="color:#7a4f2a; font-weight:500; text-decoration:underline; background:transparent; padding:0;">ufc</a>，看看是否符合你的预期。
+        </p>
+
+        <div class="footer-meta">
+            —— 产品说明式介绍 · 日常浏览参考 ——
+        </div>
+    </div>
+</body>
+</html>
